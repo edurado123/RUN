@@ -1,0 +1,101 @@
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.unit.dp
+
+@Composable
+fun EmptyActivityCompose() {
+    var selectedDate by remember { mutableStateOf("") }
+    var selectedTime by remember { mutableStateOf("") }
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp)
+    ) {
+        Text(
+            text = "Agenda",
+            fontSize = 25.sp,
+            fontWeight = FontWeight.Bold,
+            textAlign = TextAlign.Center,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(40.dp)
+        )
+
+        Card(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(48.dp),
+            backgroundColor = Color.Black
+        ) {
+            Text(
+                text = "Data",
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Bold,
+                color = Color.White,
+                textAlign = TextAlign.Center,
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(10.dp)
+            )
+        }
+
+        // DatePicker Compose component goes here
+
+        Card(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(48.dp),
+            backgroundColor = Color.Black
+        ) {
+            Text(
+                text = "Hora",
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Bold,
+                color = Color.White,
+                textAlign = TextAlign.Center,
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(10.dp)
+            )
+        }
+
+        // TimePicker Compose component goes here
+
+        Text(
+            text = "Escolha os dias",
+            fontSize = 18.sp,
+            fontWeight = FontWeight.Bold,
+            color = Color.Black,
+            modifier = Modifier.padding(20.dp)
+        )
+
+        // Checkbox and TextView Compose components for days of the week go here
+
+        Button(
+            onClick = { /* Handle button click */ },
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(40.dp)
+                .background(Color.Black)
+                .padding(horizontal = 16.dp),
+            colors = ButtonDefaults.buttonColors(backgroundColor = Color.Black),
+            shape = MaterialTheme.shapes.medium
+        ) {
+            Text(
+                text = "Agendar",
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Bold,
+                color = Color.White
+            )
+        }
+    }
+}
