@@ -1,0 +1,102 @@
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardController
+import androidx.compose.foundation.text.KeyboardType
+import androidx.compose.material3.Button
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.scale
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.LocalDensity.current
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.platform.LocalView
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.example.yourpackage.R // Substitua "yourpackage" pelo nome do pacote do seu aplicativo
+
+@Composable
+fun MainActivity() {
+    Surface(
+        modifier = Modifier.fillMaxSize(),
+        color = Color.Black
+    ) {
+        Column(
+            modifier = Modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Text(
+                text = "Run Unlimited",
+                fontSize = 36.sp,
+                color = Color.White,
+                fontWeight = androidx.compose.ui.text.font.FontWeight.Bold
+            )
+
+            Image(
+                painter = painterResource(id = R.drawable.logo), // Substitua pelo recurso de imagem correto
+                contentDescription = null,
+                contentScale = ContentScale.FillWidth,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(300.dp)
+                    .clip(MaterialTheme.shapes.medium)
+            )
+
+            var nome by remember { mutableStateOf("") }
+            var senha by remember { mutableStateOf("") }
+
+            BasicTextField(
+                value = nome,
+                onValueChange = { nome = it },
+                textStyle = MaterialTheme.typography.body1,
+                keyboardActions = KeyboardActions(onDone = { /* Handle Done action */ }),
+                keyboardOptions = KeyboardType.Text,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 40.dp, vertical = 20.dp)
+                    .background(MaterialTheme.colorScheme.background)
+            )
+
+            BasicTextField(
+                value = senha,
+                onValueChange = { senha = it },
+                textStyle = MaterialTheme.typography.body1,
+                keyboardActions = KeyboardActions(onDone = { /* Handle Done action */ }),
+                keyboardOptions = KeyboardType.NumberPassword,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 40.dp, vertical = 20.dp)
+                    .background(MaterialTheme.colorScheme.background)
+            )
+
+            Button(
+                onClick = { /* Handle button click */ },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 100.dp, vertical = 20.dp)
+                    .clip(MaterialTheme.shapes.medium)
+                    .background(MaterialTheme.colorScheme.primary)
+            ) {
+                Text(
+                    text = "Login",
+                    fontSize = 18.sp,
+                    fontWeight = androidx.compose.ui.text.font.FontWeight.Bold,
+                    color = Color.Black,
+                    modifier = Modifier.padding(15.dp)
+                )
+            }
+        }
+    }
+}
+
