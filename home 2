@@ -1,0 +1,89 @@
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.input.TextFieldValue
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import com.example.myapplication.R // Lembre-se de substituir "com.example.myapplication" pelo nome do seu pacote
+
+@Composable
+fun Home() {
+    var searchQuery by remember { mutableStateOf(TextFieldValue()) }
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp)
+    ) {
+        Text(
+            text = "Bem-vinda(o), Ana",
+            fontSize = 18.sp,
+            fontWeight = FontWeight.Normal,
+            modifier = Modifier.align(Alignment.CenterHorizontally),
+            color = Color.Black
+        )
+
+        BasicTextField(
+            value = searchQuery,
+            onValueChange = { searchQuery = it },
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 8.dp),
+            singleLine = true,
+            textStyle = LocalTextStyle.current.copy(fontSize = 14.sp),
+            placeholder = { Text("Pesquisar...") },
+            colors = TextFieldDefaults.textFieldColors(
+                backgroundColor = Color.White
+            )
+        )
+
+        Text(
+            text = "Todos os Serviços",
+            fontSize = 18.sp,
+            fontWeight = FontWeight.Bold,
+            color = Color.Black,
+            modifier = Modifier.padding(top = 20.dp)
+        )
+
+        LazyColumn(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(top = 10.dp)
+        ) {
+            // Aqui você pode adicionar itens à lista usando items()
+        }
+
+        Button(
+            onClick = { /* Ação do botão Agendar */ },
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 20.dp, start = 100.dp, end = 100.dp, bottom = 20.dp)
+        ) {
+            Text(
+                text = "AGENDA",
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Bold,
+                color = Color.White,
+                modifier = Modifier.padding(end = 8.dp)
+            )
+            Icon(
+                painter = painterResource(id = R.drawable.ic_baseline_arrow_right_alt_24),
+                contentDescription = null,
+                tint = Color.White
+            )
+        }
+    }
+}
+
+@Preview
+@Composable
+fun HomePreview() {
+    Home()
+}
